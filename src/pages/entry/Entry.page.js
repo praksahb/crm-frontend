@@ -36,10 +36,10 @@ export const Entry = () => {
 	const handleOnResetSubmit = (e) => {
 		e.preventDefault();
 		if (!email) {
-			return alert("Please enter the details");
+			return alert("Please enter the detail");
 		}
 		//TODO capp api to submit the form
-		console.log(email, password);
+		console.log(email);
 	};
 
 	const formSwitcher = (formType) => {
