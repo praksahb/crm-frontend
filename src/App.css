@@ -36,11 +36,6 @@
 		transform: rotate(360deg);
 	}
 } */
-
-.logo-image {
-	width: 50px;
-}
-
 .default-layout {
 	display: grid;
 	grid-template-rows: 80px auto 3rem;
