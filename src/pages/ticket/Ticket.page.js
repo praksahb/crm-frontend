@@ -12,9 +12,7 @@ export const Ticket = () => {
 	useEffect(() => {}, [message]);
 
 	const handleOnChange = (e) => {
-		//console.log(e.target.value);
 		setMessage(e.target.value);
-		console.log(message);
 	};
 
 	const handleOnSubmit = (e) => {
