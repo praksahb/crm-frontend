@@ -1,5 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 export const TicketTable = ({ tickets }) => {
 	return (
@@ -15,13 +16,13 @@ export const TicketTable = ({ tickets }) => {
 			<tbody>
 				{tickets.length ? (
 					tickets.map((row) => {
-						//const { id, subjects, status, addedAt } = row;
+						const { id, subject, status, addedAt } = row;
 						return (
-							<tr key={row.id}>
-								<td>{row.id}</td>
-								<td>{row.subjects}</td>
-								<td>{row.status}</td>
-								<td>{row.addedAt}</td>
+							<tr key={id}>
+								<td>{id}</td>
+								<td>{subject}</td>
+								<td>{status}</td>
+								<td>{addedAt}</td>
 							</tr>
 						);
 					})
@@ -35,4 +36,8 @@ export const TicketTable = ({ tickets }) => {
 			</tbody>
 		</Table>
 	);
+};
+
+TicketTable.propTypes = {
+	tickets: PropTypes.array.isRequired,
 };
