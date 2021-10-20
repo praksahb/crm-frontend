@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Jumbotron from "react-bootstrap/Jumbotron";
+// import Jumbotron from "react-bootstrap/Jumbotron";
 import { LoginForm } from "../../components/login/login.comp";
 import { ResetPassword } from "../../components/password-reset/PasswordReset.comp";
 
@@ -48,7 +48,7 @@ export const Entry = () => {
 
 	return (
 		<div className="entry-page bg-info">
-			<Jumbotron className="form-box">
+			<div className="jumbotron form-box">
 				{formLoad === "login" && (
 					<LoginForm
 						handleOnChange={handleOnChange}
@@ -66,7 +66,7 @@ export const Entry = () => {
 						email={email}
 					/>
 				)}
-			</Jumbotron>
+			</div>
 		</div>
 	);
 };

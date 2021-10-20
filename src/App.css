@@ -38,7 +38,7 @@
 } */
 .default-layout {
 	display: grid;
-	grid-template-rows: 80px auto 3rem;
+	grid-template-rows: 90px auto 3rem;
 	grid-template-areas:
 		"header"
 		"main"
@@ -59,4 +59,12 @@ footer {
 	background: black;
 	padding: 1rem;
 	color: white;
+}
+
+.jumbotron {
+	/* padding: 2rem 1rem;
+	text-align: start;
+	margin-bottom: 2rem;
+	background-color: var(--bs-info);
+	border-radius: 0.3rem; */
 }
