@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { PageBreadcrumb } from "../../components/breadcrumb/Breadcrumb.comp";
+import { PageBreadcrumb } from "../../components/breadcrumb/PageBreadcrumb.comp";
 import { SearchForm } from "../../components/search-form/SearchForm.comp";
 import { TicketTable } from "../../components/ticket-table/TicketTable.comp";
 import tickets from "../../assets/data/dummy-tickets.json";
+import { Link } from "react-router-dom";
 
 export const TicketLists = () => {
 	const [str, setStr] = useState("");
@@ -34,7 +35,9 @@ export const TicketLists = () => {
 			</Row>
 			<Row className="mt-4">
 				<Col md={4} className="mb-2">
-					<Button variant="info">Add New Ticket</Button>
+					<Link to="/add-ticket">
+						<Button variant="info">Add New Ticket</Button>
+					</Link>
 				</Col>
 				<Col md={{ span: 4, offset: 4 }} className="text-end mb-2">
 					<SearchForm handleOnChange={handleOnChange} str={str} />
