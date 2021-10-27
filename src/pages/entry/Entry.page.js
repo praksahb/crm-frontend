@@ -6,40 +6,10 @@ import { ResetPassword } from "../../components/password-reset/PasswordReset.com
 import "./entry.css";
 
 export const Entry = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
 	const [formLoad, setFormLoad] = useState("login");
-
-	const handleOnChange = (e) => {
-		const { name, value } = e.target;
-		switch (name) {
-			case "email":
-				setEmail(value);
-				break;
-			case "password":
-				setPassword(value);
-				break;
-			default:
-				break;
-		}
-	};
-
-	const handleOnSubmit = (e) => {
-		e.preventDefault();
-		if (!email || !password) {
-			return alert("Please enter the details");
-		}
-		//TODO capp api to submit the form
-		console.log(email, password);
-	};
 
 	const handleOnResetSubmit = (e) => {
 		e.preventDefault();
-		if (!email) {
-			return alert("Please enter the detail");
-		}
-		//TODO capp api to submit the form
-		console.log(email);
 	};
 
 	const formSwitcher = (formType) => {
@@ -50,21 +20,14 @@ export const Entry = () => {
 		<div className="entry-page bg-info">
 			<div className="bg-light form-box">
 				{formLoad === "login" && (
-					<LoginForm
-						className=""
-						handleOnChange={handleOnChange}
-						handleOnSubmit={handleOnSubmit}
-						formSwitcher={formSwitcher}
-						email={email}
-						pass={password}
-					/>
+					<LoginForm className="" formSwitcher={formSwitcher} />
 				)}
 				{formLoad === "reset" && (
 					<ResetPassword
-						handleOnChange={handleOnChange}
+						//handleOnChange={handleOnChange}
 						handleOnResetSubmit={handleOnResetSubmit}
 						formSwitcher={formSwitcher}
-						email={email}
+						//email={email}
 					/>
 				)}
 			</div>
