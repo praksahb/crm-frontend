@@ -12,9 +12,8 @@ import { fetchSingleTicket, closeTicket } from "../ticket-list/ticketsAction";
 export const Ticket = () => {
 	const { tid } = useParams();
 	const dispatch = useDispatch();
-	const { isLoading, selectedTicket, error, replyMsg } = useSelector(
-		(state) => state.tickets
-	);
+	const { isLoading, selectedTicket, error, replyMsg, replyTicketError } =
+		useSelector((state) => state.tickets);
 
 	useEffect(() => {
 		dispatch(fetchSingleTicket(tid));
@@ -31,6 +30,9 @@ export const Ticket = () => {
 				<Col>
 					{isLoading && <Spinner variant="primary" animation="grow" />}
 					{error && <Alert variant="danger">{error}</Alert>}
+					{replyTicketError && (
+						<Alert variant="danger">{replyTicketError}</Alert>
+					)}
 					{replyMsg && <Alert variant="success">{replyMsg}</Alert>}
 				</Col>
 			</Row>
