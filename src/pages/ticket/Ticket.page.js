@@ -7,6 +7,7 @@ import { PageBreadcrumb } from "../../components/breadcrumb/PageBreadcrumb.comp"
 import { MessageHistory } from "../../components/message-history/MessageHistory.comp";
 import { UpdateTicket } from "../../components/update-ticket/UpdateTicket.comp";
 import { fetchSingleTicket, closeTicket } from "../ticket-list/ticketsAction";
+import { resetResponseMsg } from "../ticket-list/ticketSlice";
 
 // const ticket = tickets[0];
 export const Ticket = () => {
@@ -17,7 +18,12 @@ export const Ticket = () => {
 
 	useEffect(() => {
 		dispatch(fetchSingleTicket(tid));
-	}, [tid, dispatch]);
+
+		//anonymous function run everytime the component will unmount
+		return () => {
+			(replyMsg || replyTicketError) && dispatch(resetResponseMsg());
+		};
+	}, [tid, dispatch, replyMsg, replyTicketError]);
 
 	return (
 		<Container>

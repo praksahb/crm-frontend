@@ -3,7 +3,7 @@ import {
 	openNewTicketPending,
 	openNewTicketSuccess,
 	openNewTicketFail,
-} from "./addTicketSlicer";
+} from "./addTicketSlice";
 
 export const openNewTicket = (formData) => (dispatch) => {
 	return new Promise(async (resolve, reject) => {

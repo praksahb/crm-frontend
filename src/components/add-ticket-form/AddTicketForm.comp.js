@@ -4,6 +4,7 @@ import { Form, Row, Col, Button, Spinner, Alert } from "react-bootstrap";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { shortText } from "../../utils/validation";
 import { openNewTicket } from "./addTicketAction";
+import { resetSuccessMsg } from "./addTicketSlice";
 
 import "./add-ticket-form.style.css";
 
@@ -31,7 +32,11 @@ export const AddTicketForm = () => {
 	const [formData, setFormdata] = useState(initialFrmDt);
 	const [formDataError, setFormDataError] = useState(initialFrmError);
 
-	useEffect(() => {}, [formData, formDataError]);
+	useEffect(() => {
+		return () => {
+			successMsg && dispatch(resetSuccessMsg());
+		};
+	}, [formData, formDataError]);
 
 	const handleOnChange = (e) => {
 		const { name, value } = e.target;
