@@ -6,22 +6,19 @@ import { PageBreadcrumb } from "../../components/breadcrumb/PageBreadcrumb.comp"
 //import tickets from "../../assets/data/dummy-tickets.json";
 import { MessageHistory } from "../../components/message-history/MessageHistory.comp";
 import { UpdateTicket } from "../../components/update-ticket/UpdateTicket.comp";
-import { fetchSingleTicket } from "../ticket-list/ticketsAction";
+import { fetchSingleTicket, closeTicket } from "../ticket-list/ticketsAction";
 
 // const ticket = tickets[0];
 export const Ticket = () => {
 	const { tid } = useParams();
 	const dispatch = useDispatch();
-	const { isLoading, selectedTicket, error } = useSelector(
+	const { isLoading, selectedTicket, error, replyMsg } = useSelector(
 		(state) => state.tickets
 	);
 
-	const [message, setMessage] = useState("");
-	const [ticket, setTicket] = useState("");
-
 	useEffect(() => {
 		dispatch(fetchSingleTicket(tid));
-	}, [message, tid, dispatch]);
+	}, [tid, dispatch]);
 
 	return (
 		<Container>
@@ -34,6 +31,7 @@ export const Ticket = () => {
 				<Col>
 					{isLoading && <Spinner variant="primary" animation="grow" />}
 					{error && <Alert variant="danger">{error}</Alert>}
+					{replyMsg && <Alert variant="success">{replyMsg}</Alert>}
 				</Col>
 			</Row>
 			<Row>
@@ -47,7 +45,13 @@ export const Ticket = () => {
 					<div className="status">Status: {selectedTicket.status}</div>
 				</Col>
 				<Col className="text-end">
-					<Button variant="outline-info">Close ticket</Button>
+					<Button
+						variant="outline-info"
+						onClick={() => dispatch(closeTicket(tid))}
+						disabled={selectedTicket.status === "Closed"}
+					>
+						Close ticket
+					</Button>
 				</Col>
 			</Row>
 			<Row className="mt-4">
