@@ -73,7 +73,7 @@ export const RegistrationForm = () => {
 
 	const handleOnSubmit = (e) => {
 		e.preventDefault();
-		console.log(newUser);
+		//console.log(newUser);
 
 		const { name, phone, email, company, address, password } = newUser;
 

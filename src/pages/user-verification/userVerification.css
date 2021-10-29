@@ -1,0 +1,29 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+.verification-page {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-box {
+	background-color: #f5f5f5;
+	box-shadow: 0px 0px 15px -5px black;
+	border-radius: 0.5rem;
+	padding: 30px 20px 10px 20px;
+}
+
+.pass-top-spacing {
+	margin-top: 0.15em;
+}
