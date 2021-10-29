@@ -9,6 +9,7 @@ import { Entry } from "./pages/entry/Entry.page";
 import { AddTicket } from "./pages/new-ticket/AddTicket.page";
 import { TicketLists } from "./pages/ticket-list/TicketLists.page";
 import { Ticket } from "./pages/ticket/Ticket.page";
+import { Registration } from "./pages/Registration/Registration.page";
 
 function App() {
 	return (
@@ -17,6 +18,9 @@ function App() {
 				<Switch>
 					<Route exact path="/">
 						<Entry />
+					</Route>
+					<Route exact path="/registration">
+						<Registration />
 					</Route>
 
 					<PrivateRoute path="/dashboard">
