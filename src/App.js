@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 // import { DefaultLayout } from "./layout/DefaultLayout";
-import { Dashboard } from "./pages/dashboard/Dashboard.page";
 import { PrivateRoute } from "./components/private-route/PrivateRoute.comp";
 
+import { Dashboard } from "./pages/dashboard/Dashboard.page";
 import { Entry } from "./pages/entry/Entry.page";
 import { AddTicket } from "./pages/new-ticket/AddTicket.page";
 import { TicketLists } from "./pages/ticket-list/TicketLists.page";

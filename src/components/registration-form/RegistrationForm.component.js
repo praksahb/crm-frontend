@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import {
+	Container,
+	Row,
+	Col,
+	Form,
+	Button,
+	Spinner,
+	Alert,
+} from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+
+import { newUserRegistration } from "./userRegistrationAction";
 
 const initialState = {
-	name: "",
-	phone: "",
-	email: "",
-	company: "",
-	address: "",
-	password: "",
-	confirmPass: "",
+	name: "Bhaskar Pal",
+	phone: "9000000000",
+	email: "bhaskar1126@gmail.com",
+	company: "faker@mail.com",
+	address: "123, fake address, state-name",
+	password: "Roger.32",
+	confirmPass: "Roger.32",
 };
 
 const passVerification = {
@@ -21,8 +32,13 @@ const passVerification = {
 };
 
 export const RegistrationForm = () => {
+	const dispatch = useDispatch();
 	const [newUser, setNewUser] = useState(initialState);
 	const [passwordError, setPasswordError] = useState(passVerification);
+
+	const { isLoading, status, message } = useSelector(
+		(state) => state.registration
+	);
 
 	useEffect(() => {}, [newUser]);
 
@@ -57,8 +73,23 @@ export const RegistrationForm = () => {
 
 	const handleOnSubmit = (e) => {
 		e.preventDefault();
-
 		console.log(newUser);
+
+		const { name, phone, email, company, address, password } = newUser;
+
+		const newRegUser = {
+			name,
+			phone,
+			email,
+			company,
+			address,
+			password,
+		};
+		//connect user reg form to backend api and manage network state with reduc
+		dispatch(newUserRegistration(newRegUser));
+
+		//email user to a link to verfiy email id
+		//create front end page to hadndle the email verification that client receives in their email
 	};
 
 	return (
@@ -67,8 +98,21 @@ export const RegistrationForm = () => {
 				<Col>
 					<h2 className="py-0 my-0 text-info">User Registration</h2>
 				</Col>
+				<hr className="mt-1 mb-2" />
 			</Row>
-			<hr className="mt-1" />
+
+			<Row>
+				<Col>
+					{message && (
+						<Alert
+							className="m-0 p-1"
+							variant={status === "success" ? "success" : "danger"}
+						>
+							{message}
+						</Alert>
+					)}
+				</Col>
+			</Row>
 			<Row>
 				<Col>
 					<Form onSubmit={handleOnSubmit}>
@@ -194,15 +238,21 @@ export const RegistrationForm = () => {
 								One special character
 							</li>
 						</ul>
-
-						<Button
-							className="mt-0 py-1"
-							variant="primary"
-							type="submit"
-							disabled={Object.values(passwordError).includes(false)}
-						>
-							Submit
-						</Button>
+						<Row>
+							<Col>
+								<Button
+									className="mt-0 py-1"
+									variant="primary"
+									type="submit"
+									disabled={Object.values(passwordError).includes(false)}
+								>
+									Submit
+								</Button>
+							</Col>
+							<Col>
+								{isLoading && <Spinner variant="info" animation="border" />}
+							</Col>
+						</Row>
 					</Form>
 				</Col>
 			</Row>

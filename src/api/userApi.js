@@ -6,6 +6,22 @@ const userProfileUrl = rootUrl + "user";
 const logoutUrl = rootUrl + "user/logout";
 const newAccessJWTurl = rootUrl + "tokens";
 
+export const userRegistration = (formData) => {
+	return new Promise(async (resolve, reject) => {
+		try {
+			const res = await axios.post(userProfileUrl, formData);
+
+			resolve(res.data);
+
+			if (res.data.status === "success") {
+				resolve(res.data);
+			}
+		} catch (error) {
+			reject(error);
+		}
+	});
+};
+
 export const userLogin = (frmData) => {
 	return new Promise(async (resolve, reject) => {
 		try {
