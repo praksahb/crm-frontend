@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 // import { DefaultLayout } from "./layout/DefaultLayout";
-import { PrivateRoute } from "./components/private-route/PrivateRoute.comp";
+import { PrivateRouteClient } from "./components/private-route/PrivateRouteClient.comp";
+import { PrivateRouteAdmin } from "./components/private-route/PrivateRouteAdmin.comp";
 
 import { Dashboard } from "./pages/dashboard/Dashboard.page";
 import { Entry } from "./pages/entry/Entry.page";
@@ -28,26 +29,26 @@ function App() {
 					<Route exact path="/verification/:_id/:email">
 						<UserVerification />
 					</Route>
-					<Route exact path="/login4admin">
+					<Route exact path="/admin">
 						<AdminLogin />
 					</Route>
 
-					<PrivateRoute path="/dashboard">
+					<PrivateRouteClient path="/dashboard">
 						<Dashboard />
-					</PrivateRoute>
-					<PrivateRoute path="/add-ticket">
+					</PrivateRouteClient>
+					<PrivateRouteClient path="/add-ticket">
 						<AddTicket />
-					</PrivateRoute>
-					<PrivateRoute path="/tickets">
+					</PrivateRouteClient>
+					<PrivateRouteClient path="/tickets">
 						<TicketLists />
-					</PrivateRoute>
-					<PrivateRoute path="/ticket/:tid">
+					</PrivateRouteClient>
+					<PrivateRouteClient path="/ticket/:tid">
 						<Ticket />
-					</PrivateRoute>
+					</PrivateRouteClient>
 
-					<PrivateRoute path="/admin-dashboard">
+					<PrivateRouteAdmin path="/admin-dashboard">
 						<AdminDashboard />
-					</PrivateRoute>
+					</PrivateRouteAdmin>
 				</Switch>
 			</Router>
 		</div>

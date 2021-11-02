@@ -4,7 +4,7 @@ const rootUrl = "http://localhost:3001/v1/";
 const loginUrl = rootUrl + "user/login";
 const userProfileUrl = rootUrl + "user";
 const logoutUrl = rootUrl + "user/logout";
-const newAccessJWTurl = rootUrl + "tokens";
+const newAccessJWTurl = rootUrl + "tokens/client";
 const userVerificationUrl = userProfileUrl + "/verify";
 
 export const userRegistration = (formData) => {
@@ -118,6 +118,6 @@ export const userLogout = async () => {
 			},
 		});
 	} catch (error) {
-		console.log(error);
+		console.log(error.message);
 	}
 };

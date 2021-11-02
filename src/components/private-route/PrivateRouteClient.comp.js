@@ -8,7 +8,7 @@ import { getUserProfile } from "../../pages/dashboard/userAction";
 
 import { DefaultLayout } from "../../layout/DefaultLayout";
 
-export const PrivateRoute = ({ children, ...rest }) => {
+export const PrivateRouteClient = ({ children, ...rest }) => {
 	const dispatch = useDispatch();
 	const { isAuth } = useSelector((state) => state.login);
 	const { user } = useSelector((state) => state.user);
@@ -31,7 +31,7 @@ export const PrivateRoute = ({ children, ...rest }) => {
 		<Route
 			{...rest}
 			render={() =>
-				isAuth ? <DefaultLayout>{children}</DefaultLayout> : <Redirect to="" />
+				isAuth ? <DefaultLayout>{children}</DefaultLayout> : <Redirect to="/" />
 			}
 		/>
 	);

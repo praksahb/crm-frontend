@@ -6,27 +6,27 @@ const initialState = {
 	error: "",
 };
 
-const loginSlice = createSlice({
-	name: "login",
+const adminLoginSlice = createSlice({
+	name: "adminLogin",
 	initialState,
 	reducers: {
-		loginPending: (state) => {
+		adminLoginPending: (state) => {
 			state.isLoading = true;
 		},
-		loginSuccess: (state) => {
+		adminLoginSuccess: (state) => {
 			state.isLoading = false;
 			state.isAuth = true;
 			state.error = "";
 		},
-		loginFail: (state, { payload }) => {
+		adminLoginFail: (state, { payload }) => {
 			state.isLoading = false;
 			state.error = payload;
 		},
 	},
 });
 
-const { reducer, actions } = loginSlice;
+const { reducer, actions } = adminLoginSlice;
 
-export const { loginPending, loginSuccess, loginFail } = actions;
+export const { adminLoginPending, adminLoginSuccess, adminLoginFail } = actions;
 
 export default reducer;

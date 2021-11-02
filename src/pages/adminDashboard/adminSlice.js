@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	user: {},
+	adminInfo: {},
 	isLoading: false,
 	error: "",
 };
 
-const userSlice = createSlice({
-	name: "user",
+const adminSlice = createSlice({
+	name: "admin",
 	initialState,
 	reducers: {
 		getAdminPending: (state) => {
@@ -15,7 +15,7 @@ const userSlice = createSlice({
 		},
 		getAdminSuccess: (state, { payload }) => {
 			state.isLoading = false;
-			state.user = payload;
+			state.adminInfo = payload;
 			state.error = "";
 		},
 		getAdminFail: (state, { payload }) => {
@@ -25,7 +25,7 @@ const userSlice = createSlice({
 	},
 });
 
-const { reducer, actions } = userSlice;
+const { reducer, actions } = adminSlice;
 
 export const { getAdminPending, getAdminSuccess, getAdminFail } = actions;
 
