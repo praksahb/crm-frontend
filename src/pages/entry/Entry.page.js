@@ -19,15 +19,11 @@ export const Entry = () => {
 	return (
 		<div className="entry-page bg-info">
 			<div className="bg-light form-box">
-				{formLoad === "login" && (
-					<LoginForm className="" formSwitcher={formSwitcher} />
-				)}
+				{formLoad === "login" && <LoginForm formSwitcher={formSwitcher} />}
 				{formLoad === "reset" && (
 					<ResetPassword
-						//handleOnChange={handleOnChange}
 						handleOnResetSubmit={handleOnResetSubmit}
 						formSwitcher={formSwitcher}
-						//email={email}
 					/>
 				)}
 			</div>

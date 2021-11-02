@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+
 import { Form, Row, Col, Button, Spinner, Alert } from "react-bootstrap";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+
 import { shortText } from "../../utils/validation";
 import { openNewTicket } from "./addTicketAction";
 import { resetSuccessMsg } from "./addTicketSlice";
@@ -10,13 +13,13 @@ import "./add-ticket-form.style.css";
 
 const initialFrmDt = {
 	subject: "",
-	issueDate: "",
+	// issueDate: "",
 	message: "",
 };
 
 const initialFrmError = {
 	subject: false,
-	issueDate: false,
+	// issueDate: false,
 	message: false,
 };
 export const AddTicketForm = () => {
@@ -24,6 +27,7 @@ export const AddTicketForm = () => {
 	const {
 		user: { name },
 	} = useSelector((state) => state.user);
+	const history = useHistory();
 
 	const { isLoading, error, successMsg } = useSelector(
 		(state) => state.openTicket
@@ -36,7 +40,7 @@ export const AddTicketForm = () => {
 		return () => {
 			successMsg && dispatch(resetSuccessMsg());
 		};
-	}, [formData, formDataError]);
+	}, [dispatch, formData, formDataError, successMsg]);
 
 	const handleOnChange = (e) => {
 		const { name, value } = e.target;
@@ -60,8 +64,14 @@ export const AddTicketForm = () => {
 
 		dispatch(openNewTicket({ ...formData, sender: name }));
 		setFormdata(initialFrmDt);
+		redirectAfterSetTime(500);
 		//console.log("form submit req received", formData);
 	};
+
+	const redirectAfterSetTime = (timeInMS) =>
+		setTimeout(() => {
+			history.push("/dashboard");
+		}, timeInMS);
 
 	return (
 		<div className="container-fluid mt-3 add-new-ticket bg-light">
@@ -83,7 +93,7 @@ export const AddTicketForm = () => {
 							value={formData.subject}
 							placeholder="Subject"
 							minLength="3"
-							maxLength="10"
+							maxLength="100"
 							onChange={handleOnChange}
 							required
 						/>
@@ -92,7 +102,7 @@ export const AddTicketForm = () => {
 						</Form.Text>
 					</Col>
 				</Form.Group>
-				<Form.Group className="mb-3" as={Row}>
+				{/* <Form.Group className="mb-3" as={Row}>
 					<Form.Label column sm={3}>
 						Date Issued
 					</Form.Label>
@@ -105,7 +115,7 @@ export const AddTicketForm = () => {
 							required
 						/>
 					</Col>
-				</Form.Group>
+				</Form.Group> */}
 				<Form.Group>
 					<FloatingLabel
 						controlId="floatingTextarea2"

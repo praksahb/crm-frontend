@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { Spinner, Alert } from "react-bootstrap";
 
 import { userRegistrationVerification } from "../../api/userApi";
@@ -15,6 +15,8 @@ export const UserVerification = () => {
 	const { _id, email } = useParams();
 	const dt = { _id, email };
 
+	const history = useHistory();
+
 	const [response, setResponse] = useState(initialResponse);
 
 	useEffect(() => {
@@ -23,8 +25,18 @@ export const UserVerification = () => {
 			setResponse(result);
 		};
 
-		!response.status && apiCall();
+		!response.status &&
+			apiCall() &&
+			setTimeout(() => {
+				history.push("/");
+			}, 3000);
 	}, [response]);
+
+	//timed out redirect
+	const redirectAfterSetTime = (timeInMS) =>
+		setTimeout(() => {
+			history.push("/");
+		}, timeInMS);
 
 	//call api and send _id to verify user
 
@@ -40,6 +52,7 @@ export const UserVerification = () => {
 						{response.message}
 					</Alert>
 				)}
+				<p>Redirecting to login page in less than 5 seconds</p>
 			</div>
 		</div>
 	);

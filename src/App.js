@@ -11,6 +11,8 @@ import { TicketLists } from "./pages/ticket-list/TicketLists.page";
 import { Ticket } from "./pages/ticket/Ticket.page";
 import { Registration } from "./pages/Registration/Registration.page";
 import { UserVerification } from "./pages/user-verification/userVerification.page";
+import { AdminLogin } from "./pages/adminLogin/AdminLogin.page";
+import { AdminDashboard } from "./pages/adminDashboard/AdminDashboard.page";
 
 function App() {
 	return (
@@ -26,6 +28,9 @@ function App() {
 					<Route exact path="/verification/:_id/:email">
 						<UserVerification />
 					</Route>
+					<Route exact path="/login4admin">
+						<AdminLogin />
+					</Route>
 
 					<PrivateRoute path="/dashboard">
 						<Dashboard />
@@ -38,6 +43,10 @@ function App() {
 					</PrivateRoute>
 					<PrivateRoute path="/ticket/:tid">
 						<Ticket />
+					</PrivateRoute>
+
+					<PrivateRoute path="/admin-dashboard">
+						<AdminDashboard />
 					</PrivateRoute>
 				</Switch>
 			</Router>

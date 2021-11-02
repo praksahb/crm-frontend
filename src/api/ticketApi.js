@@ -7,7 +7,7 @@ const closeTicketUrl = rootUrl + "ticket/close-ticket/";
 export const getAllTickets = () => {
 	return new Promise(async (resolve, reject) => {
 		try {
-			const result = await axios.get("http://localhost:3001/v1/ticket", {
+			const result = await axios.get(ticketUrl, {
 				headers: {
 					Authorization: sessionStorage.getItem("accessJWT"),
 				},
