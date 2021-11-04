@@ -44,7 +44,7 @@ export const AdminLoginForm = () => {
 			}
 
 			dispatch(adminLoginSuccess());
-			const user = await dispatch(getAdminProfile());
+			//const user = await dispatch(getAdminProfile());
 
 			history.push("/admin-dashboard");
 		} catch (error) {

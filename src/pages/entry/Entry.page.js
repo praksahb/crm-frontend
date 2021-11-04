@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import Jumbotron from "react-bootstrap/Jumbotron";
-import { LoginForm } from "../../components/login/Login.comp";
+import { ClientLoginForm } from "../../components/client-Login/ClientLogin.comp";
 import { ResetPassword } from "../../components/password-reset/PasswordReset.comp";
 
 import "./entry.css";
@@ -19,7 +19,9 @@ export const Entry = () => {
 	return (
 		<div className="entry-page bg-info">
 			<div className="bg-light form-box">
-				{formLoad === "login" && <LoginForm formSwitcher={formSwitcher} />}
+				{formLoad === "login" && (
+					<ClientLoginForm formSwitcher={formSwitcher} />
+				)}
 				{formLoad === "reset" && (
 					<ResetPassword
 						handleOnResetSubmit={handleOnResetSubmit}

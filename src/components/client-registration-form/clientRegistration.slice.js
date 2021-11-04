@@ -6,19 +6,19 @@ const initialState = {
 	message: "",
 };
 
-const userRegistrationSlice = createSlice({
+const clientRegistrationSlice = createSlice({
 	name: "userRegistration",
 	initialState,
 	reducers: {
-		registrationPending: (state, action) => {
+		clientRegistrationPending: (state, action) => {
 			state.isLoading = true;
 		},
-		registrationSuccess: (state, { payload }) => {
+		clientRegistrationSuccess: (state, { payload }) => {
 			state.isLoading = false;
 			state.status = "success";
 			state.message = payload;
 		},
-		registrationError: (state, { payload }) => {
+		clientRegistrationError: (state, { payload }) => {
 			state.isLoading = false;
 			state.status = "error";
 			state.message = payload;
@@ -26,9 +26,12 @@ const userRegistrationSlice = createSlice({
 	},
 });
 
-const { reducer, actions } = userRegistrationSlice;
+const { reducer, actions } = clientRegistrationSlice;
 
-export const { registrationPending, registrationSuccess, registrationError } =
-	actions;
+export const {
+	clientRegistrationPending,
+	clientRegistrationSuccess,
+	clientRegistrationError,
+} = actions;
 
 export default reducer;

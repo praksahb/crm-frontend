@@ -5,13 +5,13 @@ import "./App.css";
 import { PrivateRouteClient } from "./components/private-route/PrivateRouteClient.comp";
 import { PrivateRouteAdmin } from "./components/private-route/PrivateRouteAdmin.comp";
 
-import { Dashboard } from "./pages/dashboard/Dashboard.page";
+import { Dashboard } from "./pages/clientDashboard/ClientDashboard.page";
 import { Entry } from "./pages/entry/Entry.page";
 import { AddTicket } from "./pages/new-ticket/AddTicket.page";
 import { TicketLists } from "./pages/ticket-list/TicketLists.page";
 import { Ticket } from "./pages/ticket/Ticket.page";
 import { Registration } from "./pages/Registration/Registration.page";
-import { UserVerification } from "./pages/user-verification/userVerification.page";
+import { ClientVerification } from "./pages/user-verification/clientVerification.page";
 import { AdminLogin } from "./pages/adminLogin/AdminLogin.page";
 import { AdminDashboard } from "./pages/adminDashboard/AdminDashboard.page";
 
@@ -20,6 +20,7 @@ function App() {
 		<div className="App">
 			<Router>
 				<Switch>
+					{/* public routes */}
 					<Route exact path="/">
 						<Entry />
 					</Route>
@@ -27,12 +28,13 @@ function App() {
 						<Registration />
 					</Route>
 					<Route exact path="/verification/:_id/:email">
-						<UserVerification />
+						<ClientVerification />
 					</Route>
 					<Route exact path="/admin">
 						<AdminLogin />
 					</Route>
 
+					{/* client routes */}
 					<PrivateRouteClient path="/dashboard">
 						<Dashboard />
 					</PrivateRouteClient>
@@ -46,6 +48,7 @@ function App() {
 						<Ticket />
 					</PrivateRouteClient>
 
+					{/* admin routes */}
 					<PrivateRouteAdmin path="/admin-dashboard">
 						<AdminDashboard />
 					</PrivateRouteAdmin>

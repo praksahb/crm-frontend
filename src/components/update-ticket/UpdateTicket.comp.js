@@ -8,8 +8,8 @@ import PropTypes from "prop-types";
 export const UpdateTicket = ({ _id }) => {
 	const dispatch = useDispatch();
 	const {
-		user: { name },
-	} = useSelector((state) => state.user);
+		client: { name },
+	} = useSelector((state) => state.client);
 	const [message, setMessage] = useState("");
 
 	const handleOnChange = (e) => {

@@ -12,15 +12,21 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 
-import { loginPending, loginSuccess, loginFail } from "./loginSlice";
-import { userLogin } from "../../api/userApi";
-import { getUserProfile } from "../../pages/dashboard/userAction";
+import {
+	clientLoginPending,
+	clientLoginSuccess,
+	clientLoginFail,
+} from "./clientLoginSlice";
+import { clientLogin } from "../../api/clientApi";
+import { getClientProfile } from "../../pages/clientDashboard/clientAction";
 
-export const LoginForm = ({ formSwitcher }) => {
+export const ClientLoginForm = ({ formSwitcher }) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	const { isLoading, isAuth, error } = useSelector((state) => state.login);
+	const { isLoading, isAuth, error } = useSelector(
+		(state) => state.clientLogin
+	);
 
 	useEffect(() => {
 		sessionStorage.getItem("accessJWT") && history.push("/dashboard");
@@ -49,19 +55,19 @@ export const LoginForm = ({ formSwitcher }) => {
 			return alert("Please enter the details");
 		}
 
-		dispatch(loginPending());
+		dispatch(clientLoginPending());
 		try {
-			const isAuth = await userLogin({ email, password });
+			const isAuth = await clientLogin({ email, password });
 			//console.log(isAuth);
 			if (isAuth.status === "error") {
-				return dispatch(loginFail(isAuth.message));
+				return dispatch(clientLoginFail(isAuth.message));
 			}
 
-			dispatch(loginSuccess());
-			dispatch(getUserProfile());
+			dispatch(clientLoginSuccess());
+			dispatch(getClientProfile());
 			history.push("/dashboard");
 		} catch (error) {
-			dispatch(loginFail(error.message));
+			dispatch(clientLoginFail(error.message));
 		}
 	};
 
@@ -121,6 +127,6 @@ export const LoginForm = ({ formSwitcher }) => {
 	);
 };
 
-LoginForm.propTypes = {
+ClientLoginForm.propTypes = {
 	formSwitcher: PropTypes.func.isRequired,
 };

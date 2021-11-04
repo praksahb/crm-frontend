@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router";
 import { Spinner, Alert } from "react-bootstrap";
 
-import { userRegistrationVerification } from "../../api/userApi";
+import { clientRegistrationVerification } from "../../api/clientApi";
 
 import "./userVerification.css";
 
@@ -11,7 +11,7 @@ const initialResponse = {
 	message: "",
 };
 
-export const UserVerification = () => {
+export const ClientVerification = () => {
 	const { _id, email } = useParams();
 	const dt = { _id, email };
 
@@ -21,7 +21,7 @@ export const UserVerification = () => {
 
 	useEffect(() => {
 		const apiCall = async () => {
-			const result = await userRegistrationVerification(dt);
+			const result = await clientRegistrationVerification(dt);
 			setResponse(result);
 		};
 

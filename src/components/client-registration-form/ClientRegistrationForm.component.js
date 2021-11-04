@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
-import { newUserRegistration } from "./userRegistrationAction";
+import { newClientRegistration } from "./clientRegistrationAction";
 
 const initialState = {
 	name: "Bhaskar Pal",
@@ -31,13 +31,13 @@ const passVerification = {
 	confirmPassword: false,
 };
 
-export const RegistrationForm = () => {
+export const ClientRegistrationForm = () => {
 	const dispatch = useDispatch();
 	const [newUser, setNewUser] = useState(initialState);
 	const [passwordError, setPasswordError] = useState(passVerification);
 
 	const { isLoading, status, message } = useSelector(
-		(state) => state.registration
+		(state) => state.clientRegistration
 	);
 
 	useEffect(() => {}, [newUser]);
@@ -86,7 +86,7 @@ export const RegistrationForm = () => {
 			password,
 		};
 		//connect user reg form to backend api and manage network state with reduc
-		dispatch(newUserRegistration(newRegUser));
+		dispatch(newClientRegistration(newRegUser));
 
 		//email user to a link to verfiy email id
 		//create front end page to hadndle the email verification that client receives in their email

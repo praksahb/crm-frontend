@@ -25,8 +25,8 @@ const initialFrmError = {
 export const AddTicketForm = () => {
 	const dispatch = useDispatch();
 	const {
-		user: { name },
-	} = useSelector((state) => state.user);
+		client: { name },
+	} = useSelector((state) => state.client);
 	const history = useHistory();
 
 	const { isLoading, error, successMsg } = useSelector(

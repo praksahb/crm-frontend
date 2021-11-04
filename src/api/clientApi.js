@@ -7,7 +7,7 @@ const logoutUrl = rootUrl + "user/logout";
 const newAccessJWTurl = rootUrl + "tokens/client";
 const userVerificationUrl = userProfileUrl + "/verify";
 
-export const userRegistration = (formData) => {
+export const clientRegistration = (formData) => {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const res = await axios.post(userProfileUrl, formData);
@@ -23,7 +23,7 @@ export const userRegistration = (formData) => {
 	});
 };
 
-export const userRegistrationVerification = (formData) => {
+export const clientRegistrationVerification = (formData) => {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const res = await axios.patch(userVerificationUrl, formData);
@@ -39,7 +39,7 @@ export const userRegistrationVerification = (formData) => {
 	});
 };
 
-export const userLogin = (frmData) => {
+export const clientLogin = (frmData) => {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const result = await axios.post(loginUrl, frmData);
@@ -59,7 +59,7 @@ export const userLogin = (frmData) => {
 	});
 };
 
-export const fetchUser = () => {
+export const fetchClient = () => {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const accessJWT = sessionStorage.getItem("accessJWT");
@@ -110,7 +110,7 @@ export const fetchNewAccessJWT = () => {
 	});
 };
 
-export const userLogout = async () => {
+export const clientLogout = async () => {
 	try {
 		await axios.delete(logoutUrl, {
 			headers: {

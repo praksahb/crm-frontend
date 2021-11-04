@@ -1,6 +1,6 @@
 import React from "react";
 
-import { RegistrationForm } from "../../components/registration-form/RegistrationForm.component";
+import { ClientRegistrationForm } from "../../components/client-registration-form/ClientRegistrationForm.component";
 
 import "./registration.css";
 
@@ -8,7 +8,7 @@ export const Registration = () => {
 	return (
 		<div className="registration-page bg-info">
 			<div className="form-box">
-				<RegistrationForm />
+				<ClientRegistrationForm />
 			</div>
 		</div>
 	);
