@@ -54,9 +54,9 @@ export const AdminLoginForm = () => {
 
 	return (
 		<div className="Login">
-			<h2 className="text-center text-info mb-3">Employees Login</h2>
-			{error && <Alert variant="danger">{error}</Alert>}
+			<h2 className="text-center text-info mb-3">Admin Login</h2>
 			<Form onSubmit={handleOnSubmit}>
+				{error && <Alert variant="danger">{error}</Alert>}
 				<Form.Group>
 					<Form.Label>Email</Form.Label>
 					<Form.Control
